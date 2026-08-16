@@ -37,7 +37,15 @@ jobs:
       - name: Cifre citate nel testo
         run: python3 scripts/cifre_chiave.py >> $GITHUB_STEP_SUMMARY
 
+      # enablement: true attiva Pages da solo se non lo e' ancora. Senza,
+      # il primo push su un repo nuovo fallisce con "Get Pages site failed"
+      # e bisogna andare ad accenderlo a mano nelle impostazioni prima che
+      # il workflow possa girare, il che e' un passaggio invisibile che
+      # nessuno ricorda al secondo progetto.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: sito
