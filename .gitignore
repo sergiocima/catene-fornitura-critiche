@@ -1,0 +1,13 @@
+# Copie generate in fase di build: si ricostruiscono con
+# scripts/genera_grafici.py e non vanno nella storia, altrimenti ogni file
+# finisce nel repo due volte.
+sito/dati/
+sito/assets/grafici/
+sito/assets/terre.json
+sito/assets/chokepoint.json
+
+# Materiali di lavoro: estratti di pubblicazioni altrui, tenuti in locale
+# per controllare le citazioni. Non sono nostri e non si ridistribuiscono.
+fonti/
+
+.DS_Store

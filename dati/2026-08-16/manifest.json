@@ -1,0 +1,119 @@
+{
+  "snapshot": "2026-08-16",
+  "generato": "2026-08-16T17:05:11+00:00",
+  "avvertenza": "I dati piu' recenti di Comext sono incompleti: non tutti gli stati dichiarano entro lo stesso mese. Verificare sempre la copertura per dichiarante prima di leggere l'ultimo mese come un fatto.",
+  "file": [
+    {
+      "file": "chokepoint_anagrafica.csv",
+      "righe": 28,
+      "fonte": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/PortWatch_chokepoints_database/FeatureServer/0/query",
+      "nota": "Coordinate e traffico annuo dei 28 chokepoint monitorati da IMF PortWatch.",
+      "scaricato": "2026-08-16T17:04:49+00:00",
+      "sha256": "6dfe25d3ecfb440ff256a5f1b9bfe6c1f5498f07ef49a7d2e81e3569a978e006"
+    },
+    {
+      "file": "hormuz_transiti_giornalieri.csv",
+      "righe": 2778,
+      "fonte": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+      "nota": "Transiti giornalieri stimati da dati AIS satellitari. Nelle aree di conflitto jamming, spoofing e transponder spenti fanno sottostimare i transiti reali.",
+      "scaricato": "2026-08-16T17:04:51+00:00",
+      "sha256": "a3d4424a2b752de9e38fe5176550fe76b53d305ec91a78131a1ce931c98e74d2"
+    },
+    {
+      "file": "chokepoint_transiti_mensili.csv",
+      "righe": 2576,
+      "fonte": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+      "nota": "Media giornaliera dei transiti, per mese, su tutti i chokepoint.",
+      "scaricato": "2026-08-16T17:05:02+00:00",
+      "sha256": "70c4f91f2c5bf008b62b971b70950925e119acfbeb8d708d954476c9a1077eb8"
+    },
+    {
+      "file": "lubrificanti_italia_valore_unitario_per_origine.csv",
+      "righe": 11081,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27101971+27101981+27101983+27101985+27101987+27101991+27101993+27101999.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Dettaglio per dichiarante e origine. La colonna fuori_scala segnala le celle escluse dall'aggregato perche' il valore unitario e' oltre quattro volte distante dalla mediana: non sono state cancellate, solo tenute fuori dalla media.",
+      "scaricato": "2026-08-16T17:05:04+00:00",
+      "sha256": "acd0da9b844b8e4f58ef0cea7ca3b3436409b2d39db8c66ea614a8271b86748c"
+    },
+    {
+      "file": "lubrificanti_italia_valore_unitario.csv",
+      "righe": 90,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27101971+27101981+27101983+27101985+27101987+27101991+27101993+27101999.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT, tutte le origini. Valore unitario implicito (valore diviso quantita'), non un indice di prezzo. Esclude le celle fuori scala elencate nel file per origine e i mesi ancora incompleti.",
+      "scaricato": "2026-08-16T17:05:04+00:00",
+      "sha256": "a56f8c3c488c8155bb5c0e8e9b97ec1e0edfb4e49da0abe957142cd5c412011b"
+    },
+    {
+      "file": "lubrificanti_italia_per_codice_valore_unitario_per_origine.csv",
+      "righe": 11081,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27101971+27101981+27101983+27101985+27101987+27101991+27101993+27101999.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Dettaglio per dichiarante e origine. La colonna fuori_scala segnala le celle escluse dall'aggregato perche' il valore unitario e' oltre quattro volte distante dalla mediana: non sono state cancellate, solo tenute fuori dalla media.",
+      "scaricato": "2026-08-16T17:05:07+00:00",
+      "sha256": "acd0da9b844b8e4f58ef0cea7ca3b3436409b2d39db8c66ea614a8271b86748c"
+    },
+    {
+      "file": "lubrificanti_italia_per_codice_valore_unitario.csv",
+      "righe": 719,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27101971+27101981+27101983+27101985+27101987+27101991+27101993+27101999.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT, tutte le origini. Valore unitario implicito (valore diviso quantita'), non un indice di prezzo. Esclude le celle fuori scala elencate nel file per origine e i mesi ancora incompleti.",
+      "scaricato": "2026-08-16T17:05:07+00:00",
+      "sha256": "98bec1359a4a884f1ce1857a5b88ad44c48d0eb99503ec4ee97b92feee724043"
+    },
+    {
+      "file": "lubrificanti_italia_origine.csv",
+      "righe": 3477,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27101971+27101981+27101983+27101985+27101987+27101991+27101993+27101999.1.QUANTITY_IN_100KG?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT per paese di origine.",
+      "scaricato": "2026-08-16T17:05:08+00:00",
+      "sha256": "970cf77be176b87fdfd850d1d58a412bd01da2dd756453d9e671023da4112e06"
+    },
+    {
+      "file": "greggio_italia_valore_unitario_per_origine.csv",
+      "righe": 1557,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27090090.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Dettaglio per dichiarante e origine. La colonna fuori_scala segnala le celle escluse dall'aggregato perche' il valore unitario e' oltre quattro volte distante dalla mediana: non sono state cancellate, solo tenute fuori dalla media.",
+      "scaricato": "2026-08-16T17:05:09+00:00",
+      "sha256": "893acbbe83c36f70a14e6474ab1d067fe4c8a50a7a7eabf721eafcb4a60f604c"
+    },
+    {
+      "file": "greggio_italia_valore_unitario.csv",
+      "righe": 90,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT..27090090.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT, tutte le origini. Valore unitario implicito (valore diviso quantita'), non un indice di prezzo. Esclude le celle fuori scala elencate nel file per origine e i mesi ancora incompleti.",
+      "scaricato": "2026-08-16T17:05:09+00:00",
+      "sha256": "3826c738b3489a50dd2bd8617eb4518414732c8e650f444a49d16b2cc9af7e22"
+    },
+    {
+      "file": "elio_ue_valore_unitario_per_origine.csv",
+      "righe": 1681,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT+DE+FR+NL+ES..28042910.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Dettaglio per dichiarante e origine. La colonna fuori_scala segnala le celle escluse dall'aggregato perche' il valore unitario e' oltre quattro volte distante dalla mediana: non sono state cancellate, solo tenute fuori dalla media.",
+      "scaricato": "2026-08-16T17:05:10+00:00",
+      "sha256": "2031e3431eccc4cb369216d0cd7167a59f58a8a2a693c88fe39237ddc83cf401"
+    },
+    {
+      "file": "elio_ue_valore_unitario.csv",
+      "righe": 90,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT+DE+FR+NL+ES..28042910.1.QUANTITY_IN_100KG+VALUE_IN_EUROS?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT+DE+FR+NL+ES, solo origini extra-UE. Valore unitario implicito (valore diviso quantita'), non un indice di prezzo. Esclude le celle fuori scala elencate nel file per origine e i mesi ancora incompleti.",
+      "scaricato": "2026-08-16T17:05:10+00:00",
+      "sha256": "a43825c42f1bbafcc9e3ae65b57f74efa9ba7816ef634aa69d5b0ab92a8d67bf"
+    },
+    {
+      "file": "elio_ue_origine.csv",
+      "righe": 2363,
+      "fonte": "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409/M.IT+DE+FR+NL+ES..28042910.1.QUANTITY_IN_100KG?format=SDMX-CSV&startPeriod=2019-01",
+      "nota": "Import di IT+DE+FR+NL+ES per paese di origine.",
+      "scaricato": "2026-08-16T17:05:11+00:00",
+      "sha256": "406af4978d8d4fb4155b4693986b26bc58809b110778c2df10fac4cbd10668d1"
+    },
+    {
+      "file": "sito/assets/terre.json",
+      "righe": 127,
+      "fonte": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson",
+      "nota": "Natural Earth 110m, dominio pubblico. Coordinate arrotondate a 2 decimali.",
+      "scaricato": "2026-08-16T17:05:11+00:00",
+      "sha256": "7f0e3603d453dd21da97094847fdb7e0c74f2193fcffb358e8e8b30e62d48ab9"
+    }
+  ]
+}

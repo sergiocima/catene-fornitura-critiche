@@ -1,0 +1,314 @@
+/* ------------------------------------------------------------------ base --
+   Nessun font remoto: la pagina deve caricarsi intera anche da una
+   connessione lenta e non deve dipendere da un server di terzi.
+   ------------------------------------------------------------------------ */
+
+:root {
+  --carta:        #f6f3ec;
+  --carta-scavo:  #ebe6dc;
+  --inchiostro:   #1d1c1a;
+  --inchiostro-2: #55514a;
+  --filo:         #d5cec0;
+  --accento:      #c1452b;
+  --accento-2:    #1f6f6b;
+  --misurato:     #1f6f6b;
+  --modellato:    #7a5ea8;
+  --parte:        #b4761c;
+  --chiuso:       #8a8378;
+
+  --globo-mare:   #e2ddd1;
+  --globo-terra:  #c6bfae;
+  --globo-griglia:#d3ccbc;
+  --globo-punto:  #55514a;
+  --globo-alternativa: #1f6f6b;
+  --globo-testo:  #3a3733;
+
+  --misura: 34rem;
+  --largo:  74rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --carta:        #17181a;
+    --carta-scavo:  #1f2124;
+    --inchiostro:   #ece8e1;
+    --inchiostro-2: #a8a49c;
+    --filo:         #33363a;
+    --accento:      #ff6b4a;
+    --accento-2:    #4fbdb6;
+    --misurato:     #4fbdb6;
+    --modellato:    #b295e0;
+    --parte:        #e0a13f;
+    --chiuso:       #7f7a72;
+
+    --globo-mare:   #1d2024;
+    --globo-terra:  #343a40;
+    --globo-griglia:#282c31;
+    --globo-punto:  #9aa0a6;
+    --globo-alternativa: #4fbdb6;
+    --globo-testo:  #c8c4bc;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: Iowan Old Style, Palatino, Georgia, "Times New Roman", serif;
+  font-size: clamp(1.02rem, 0.96rem + 0.3vw, 1.16rem);
+  line-height: 1.62;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .etichetta, .statuto, figcaption, nav, .comandi, th {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+a { color: inherit; text-decoration-color: var(--accento); text-underline-offset: 2px; }
+a:hover { color: var(--accento); }
+
+:focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; }
+
+/* ---------------------------------------------------------------- impianto */
+
+.involucro { max-width: var(--largo); margin: 0 auto; padding: 0 1.25rem; }
+.colonna   { max-width: var(--misura); margin-inline: auto; }
+.colonna > * + * { margin-top: 1.1em; }
+
+section { padding: 4.5rem 0; border-top: 1px solid var(--filo); }
+section:first-of-type { border-top: 0; }
+
+/* ------------------------------------------------------------------ testa */
+
+.testa { padding: clamp(3rem, 9vw, 6.5rem) 0 3.5rem; }
+
+.sopratitolo {
+  font-family: system-ui, sans-serif;
+  font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accento); margin: 0 0 1.1rem;
+}
+
+h1 {
+  font-family: Iowan Old Style, Palatino, Georgia, serif;
+  font-size: clamp(2.1rem, 1.2rem + 4vw, 3.9rem);
+  line-height: 1.08; letter-spacing: -0.02em;
+  margin: 0 0 1.2rem; max-width: 22ch;
+}
+
+.sommario {
+  font-size: clamp(1.12rem, 1rem + 0.5vw, 1.34rem);
+  color: var(--inchiostro-2); max-width: 46ch; margin: 0;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.1rem);
+  line-height: 1.16; letter-spacing: -0.015em;
+  margin: 0 0 1.6rem; max-width: 24ch;
+}
+
+h3 {
+  font-size: 1.06rem; letter-spacing: 0.01em;
+  margin: 2.4rem 0 0.5rem;
+}
+
+/* ----------------------------------------------------------------- globo */
+
+.scena { position: relative; }
+
+.scena-griglia {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 62rem) {
+  .scena-griglia { grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .scena-globo { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; }
+}
+
+.scena-globo { padding: 1rem 0; }
+
+#globo {
+  width: 100%;
+  max-width: 34rem;
+  aspect-ratio: 1;
+  display: block;
+}
+
+.tappe > * + * { margin-top: 45vh; }
+.tappe { padding: 12vh 0 45vh; }
+
+@media (max-width: 61.99rem) {
+  .scena-globo {
+    position: sticky; top: 0; z-index: 2;
+    background: linear-gradient(var(--carta) 78%, transparent);
+    padding-bottom: 1.5rem;
+  }
+  #globo { max-width: 15rem; margin-inline: auto; }
+  .tappe > * + * { margin-top: 30vh; }
+}
+
+.tappa {
+  opacity: 0.42;
+  transition: opacity 0.35s ease;
+  border-left: 2px solid transparent;
+  padding-left: 1.1rem;
+}
+.tappa.attivo { opacity: 1; border-left-color: var(--accento); }
+.tappa h3 { margin-top: 0; }
+.tappa p { margin: 0.4rem 0 0; }
+
+#globo-comandi {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  justify-content: center; margin-top: 1rem;
+}
+#globo-comandi button {
+  font: inherit; font-family: system-ui, sans-serif; font-size: 0.78rem;
+  background: transparent; color: var(--inchiostro-2);
+  border: 1px solid var(--filo); border-radius: 999px;
+  padding: 0.3rem 0.8rem; cursor: pointer;
+}
+#globo-comandi button:hover { border-color: var(--accento); color: var(--accento); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tappa { opacity: 1; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* -------------------------------------------------------------- statuto */
+
+.statuto {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 3px;
+  border: 1px solid currentColor; white-space: nowrap;
+}
+.statuto::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+}
+.statuto.misurato  { color: var(--misurato); }
+.statuto.modellato { color: var(--modellato); }
+.statuto.parte     { color: var(--parte); }
+.statuto.chiuso    { color: var(--chiuso); }
+
+.legenda-statuto {
+  display: flex; flex-wrap: wrap; gap: 0.7rem 1.1rem;
+  padding: 1.2rem; margin: 0;
+  background: var(--carta-scavo); border-radius: 4px;
+  list-style: none;
+}
+.legenda-statuto li { max-width: 15rem; font-size: 0.9rem; }
+.legenda-statuto .statuto { margin-bottom: 0.35rem; }
+
+/* -------------------------------------------------------------- figure */
+
+figure { margin: 2.6rem 0; }
+
+.grafico {
+  width: 100%; height: auto; display: block;
+  background: var(--carta-scavo); border-radius: 4px; padding: 0.5rem 0;
+}
+
+.grafico .griglia { stroke: var(--filo); stroke-width: 1; }
+.grafico .base    { stroke: var(--inchiostro-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.grafico .tacca, .grafico .unita, .grafico .etichetta-riga, .grafico .valore-riga {
+  font-family: system-ui, sans-serif; font-size: 11px; fill: var(--inchiostro-2);
+}
+.grafico .unita { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+.grafico .valore-riga { font-size: 10.5px; }
+.grafico polyline { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.grafico .banda   { fill: var(--inchiostro-2); opacity: 0.18; stroke: none; }
+.grafico .serie-1 { stroke: var(--accento); }
+.grafico .serie-2 { stroke: var(--accento-2); }
+.grafico .serie-3 { stroke: var(--modellato); }
+.grafico .punto-1 { fill: var(--accento); }
+.grafico .punto-2 { fill: var(--accento-2); }
+.grafico .punto-3 { fill: var(--modellato); }
+.grafico .barra   { fill: var(--inchiostro-2); opacity: 0.55; }
+.grafico .barra-evidenza { fill: var(--accento); }
+.grafico .evento  { stroke: var(--inchiostro); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.6; }
+.grafico .evento-testo {
+  font-family: system-ui, sans-serif; font-size: 11px; fill: var(--inchiostro-2);
+}
+
+figcaption {
+  font-size: 0.87rem; line-height: 1.5; color: var(--inchiostro-2);
+  margin-top: 0.8rem;
+  display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: baseline;
+}
+figcaption .didascalia { flex: 1 1 18rem; }
+figcaption a.scarica {
+  font-family: system-ui, sans-serif; font-size: 0.76rem;
+  border: 1px solid var(--filo); border-radius: 3px;
+  padding: 0.25rem 0.6rem; text-decoration: none; white-space: nowrap;
+}
+figcaption a.scarica:hover { border-color: var(--accento); }
+
+.chiave {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  font-family: system-ui, sans-serif; font-size: 0.8rem;
+  color: var(--inchiostro-2); margin: 0.7rem 0 0;
+  list-style: none; padding: 0;
+}
+.chiave li { display: flex; align-items: center; gap: 0.4rem; }
+.chiave i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.chiave i.vuoto {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: transparent; border: 1.5px solid var(--inchiostro-2);
+}
+
+/* --------------------------------------------------------------- schede */
+
+.schede {
+  display: grid; gap: 1.4rem; padding: 0; margin: 2rem 0 0; list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+.scheda {
+  border: 1px solid var(--filo); border-radius: 4px;
+  padding: 1.2rem 1.3rem; background: var(--carta-scavo);
+}
+.scheda h3 { margin: 0.6rem 0 0.5rem; font-size: 1.02rem; }
+.scheda p  { margin: 0; font-size: 0.94rem; color: var(--inchiostro-2); }
+
+.rilievo {
+  border-left: 3px solid var(--accento);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 1.06rem;
+}
+
+.nota {
+  background: var(--carta-scavo); border-radius: 4px;
+  padding: 1.2rem 1.3rem; font-size: 0.93rem; color: var(--inchiostro-2);
+}
+.nota strong { color: var(--inchiostro); }
+
+/* -------------------------------------------------------------- tabella */
+
+.tabella-avvolge { overflow-x: auto; margin: 2rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; min-width: 34rem; }
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--filo); }
+th { font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--inchiostro-2); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- coda */
+
+.coda {
+  border-top: 1px solid var(--filo);
+  padding: 3rem 0 4rem;
+  font-size: 0.88rem; color: var(--inchiostro-2);
+}
+.coda a { text-decoration-color: var(--filo); }
+
+.salta {
+  position: absolute; left: -9999px;
+}
+.salta:focus {
+  position: static; display: inline-block; margin: 0.5rem;
+  padding: 0.5rem 0.9rem; background: var(--accento); color: #fff;
+}

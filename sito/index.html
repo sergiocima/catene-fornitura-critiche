@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catene di fornitura critiche</title>
+<meta name="description" content="Che cos'e' una catena di fornitura, perche' alcune si rompono e altre no, e cosa si riesce davvero a misurare quando uno stretto si chiude. Un caso di studio sulla chiusura di Hormuz del 2026.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+
+<a class="salta" href="#contenuto">Salta al contenuto</a>
+
+<header class="testa involucro">
+  <div class="colonna">
+    <p class="sopratitolo">Catene di fornitura</p>
+    <h1>Il punto stretto è quasi sempre invisibile</h1>
+    <p class="sommario">Quando uno stretto si chiude, i giornali guardano il prezzo
+    del barile. Ma quello che rompe una filiera non è quasi mai la merce che tutti
+    guardano, e non è quasi mai la più grande. È quella che non si può sostituire
+    in fretta. Questa pagina prova a mostrare la differenza usando solo dati che
+    chiunque può riscaricare.</p>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<!-- ============================================================ atto primo -->
+<section class="involucro scena" id="mappamondo">
+  <div class="colonna">
+    <h2>Che cos'è una catena di fornitura</h2>
+    <p>Non è una nuvola. È una sequenza di posti precisi, ciascuno con un nome
+    e delle coordinate, e ogni passaggio fra un posto e il successivo è una nave,
+    un tubo o un camion. Il modo più rapido per capirlo è seguire un oggetto
+    banale fino alla sua origine. Prendiamo il litro di olio motore che sta nel
+    cofano di un'automobile italiana.</p>
+  </div>
+
+  <div class="scena-griglia">
+    <div class="scena-globo">
+      <canvas id="globo" role="img"
+              aria-label="Mappamondo che mostra le rotte descritte nel testo accanto."></canvas>
+      <div id="globo-comandi" class="comandi">
+        <button type="button" data-vai="0">La rotta</button>
+        <button type="button" data-vai="1">Lo stretto</button>
+        <button type="button" data-vai="2">L'alternativa</button>
+        <button type="button" data-vai="3">Gli stretti</button>
+        <button type="button" data-vai="4">Il 2026</button>
+      </div>
+    </div>
+
+    <div class="tappe">
+      <div class="tappa" data-passo="0">
+        <h3>Comincia in Qatar</h3>
+        <p>Una parte dell'olio sintetico che arriva in Europa nasce a Ras Laffan,
+        sulla costa qatarina, dove il gas naturale viene trasformato in idrocarburi
+        liquidi e da questi si ricava una base lubrificante di altissima qualità.
+        Da lì la merce esce via mare, attraversa lo stretto di Hormuz, risale il
+        canale di Suez e arriva nei porti europei, dove viene miscelata con gli
+        additivi e imbottigliata.</p>
+      </div>
+
+      <div class="tappa" data-passo="1">
+        <h3>Passa da un imbuto largo trentanove chilometri</h3>
+        <p>Nel suo punto più angusto lo stretto di Hormuz misura trentanove
+        chilometri, e le corsie di navigazione utilizzabili sono molto più
+        strette. Ci passano circa settantacinque navi al giorno, un quinto del
+        petrolio mondiale e un quarto del gas naturale liquefatto. Non esiste
+        alcuna rotta alternativa: chi carica nel Golfo Persico esce da lì e basta.</p>
+      </div>
+
+      <div class="tappa" data-passo="2">
+        <h3>Ma esiste un'altra fabbrica, dall'altra parte del mondo</h3>
+        <p>La stessa base lubrificante si produce anche in Corea del Sud, e anzi
+        il singolo impianto più grande al mondo sta a Onsan. Le navi coreane non
+        vedono Hormuz nemmeno da lontano: doppiano il capo di Buona Speranza o
+        risalgono Suez da est. Sulla carta, quindi, il Qatar è sostituibile.</p>
+        <p>Ed è qui che la questione diventa interessante, perché sulla carta non
+        basta.</p>
+      </div>
+
+      <div class="tappa" data-passo="3">
+        <h3>Gli imbuti del mondo sono ventotto</h3>
+        <p>Il Fondo monetario internazionale ne monitora ventotto, contando ogni
+        giorno le navi che li attraversano attraverso i segnali dei transponder.
+        Suez, Panama, Malacca, Gibilterra, Bab el-Mandeb, Taiwan. Sono i punti in
+        cui la geografia costringe il commercio mondiale a passare in fila
+        indiana, e sono anche i punti in cui è più facile fermarlo.</p>
+      </div>
+
+      <div class="tappa" data-passo="4">
+        <h3>Nel 2026 se n'è chiuso uno</h3>
+        <p>Confrontando i tre mesi prima e i tre mesi dopo la chiusura del
+        28 febbraio 2026, ventisette dei ventotto stretti si muovono di poco,
+        nell'ordinario andirivieni stagionale. Uno solo esce dal grafico. È il
+        modo più semplice per vedere che quello di Hormuz non è stato un calo
+        fra tanti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ atto secondo -->
+<section class="involucro">
+  <div class="colonna">
+    <h2>Perché alcune si rompono e altre no</h2>
+
+    <p>L'intuizione comune è che conti la dimensione: se salta un fornitore
+    grande, il danno è grande. La ricerca degli ultimi vent'anni dice
+    un'altra cosa. Quello che determina la propagazione di uno shock non è
+    quanto pesa il fornitore, ma quanto è difficile sostituirlo. Un fornitore
+    piccolissimo di un componente che non ha equivalenti ferma una fabbrica
+    esattamente come un fornitore enorme, e la ferma più a lungo, perché
+    trovargli un rimpiazzo richiede tempo invece che soldi.</p>
+
+    <p>Sul caso dell'olio motore il meccanismo si vede bene proprio perché
+    sembra assente. Abbiamo appena detto che la stessa base si produce in
+    Corea, quindi il problema dovrebbe risolversi comprando coreano. Il punto
+    è che un lubrificante non viene venduto sulle sue proprietà chimiche ma
+    sulla sua omologazione: la casa automobilistica approva una formulazione
+    intera, base più pacchetto additivo, e quella approvazione vale per quella
+    formulazione lì. Cambiare la base significa rifare le prove e riottenere
+    l'approvazione, e sono mesi. Nel frattempo il prodotto approvato che si
+    può vendere è quello di prima, fatto con la base che non arriva.</p>
+
+    <p class="rilievo">Il collo di bottiglia non è la molecola. È il
+    certificato. Ed è per questo che uno shock di tre settimane può diventare
+    una scarsità di diciotto mesi.</p>
+
+    <p>Da qui discende un criterio pratico per riconoscere in anticipo le
+    filiere fragili, che non richiede di indovinare la prossima crisi. Bisogna
+    cercare gli input che stanno contemporaneamente in tre condizioni: sono
+    prodotti in pochissimi posti, valgono poco in termini di fatturato, e
+    sostituirli richiede un'autorizzazione formale invece che una telefonata.
+    Le prime due proprietà si leggono nelle statistiche doganali. La terza no,
+    e va cercata nelle norme.</p>
+  </div>
+</section>
+
+<!-- ============================================================ atto terzo -->
+<section class="involucro">
+  <div class="colonna">
+    <h2>Le catene critiche, e chi le può attaccare</h2>
+
+    <p>Vale la pena separare tre cose che di solito si confondono, perché
+    rispondono a domande diverse. Un nodo può essere fragile senza essere
+    attaccabile, e attaccabile senza essere fragile.</p>
+  </div>
+
+  <ul class="schede">
+    <li class="scheda">
+      <span class="statuto misurato">Misurabile</span>
+      <h3>Il collo di bottiglia geografico</h3>
+      <p>Uno stretto, un canale, un porto. Si attacca con la forza o con la
+      prossimità, e si vede dallo spazio: i transponder delle navi lo raccontano
+      giorno per giorno. È il tipo di nodo che questa pagina riesce a misurare
+      direttamente.</p>
+    </li>
+    <li class="scheda">
+      <span class="statuto misurato">Misurabile</span>
+      <h3>Il collo di bottiglia sotto giurisdizione</h3>
+      <p>Un impianto o un'azienda che stanno dentro i confini di uno stato, il
+      quale può chiuderne il rubinetto con un decreto invece che con una mina.
+      È il caso delle licenze giapponesi del 2019 sui materiali per la
+      microelettronica coreana, e della sequenza di controlli cinesi su gallio,
+      grafite, antimonio e magneti.</p>
+    </li>
+    <li class="scheda">
+      <span class="statuto chiuso">Non misurabile da noi</span>
+      <h3>Il lucchetto della certificazione</h3>
+      <p>Nessuno stato lo controlla, ma è l'amplificatore di tutti gli altri:
+      è ciò che trasforma un'interruzione breve in una scarsità lunga. Vive
+      nei dossier di omologazione e nelle autorizzazioni all'immissione in
+      commercio, cioè in documenti che non sono una serie storica e non si
+      possono scaricare.</p>
+    </li>
+  </ul>
+
+  <div class="colonna" style="margin-top:2.6rem">
+    <h3>Dove cercarlo, oltre ai lubrificanti</h3>
+    <p>Il caso più vicino è dentro la stessa storia. A Ras Laffan, insieme alla
+    base lubrificante, si produce circa un terzo dell'elio mondiale, e l'elio
+    non ha surrogati: nessun'altra sostanza raffredda una macchina per risonanza
+    magnetica o serve alla litografia dei chip. Stesso sito, stesso stretto,
+    stesso evento, ma un input molto meno rimpiazzabile dell'olio motore.</p>
+
+    <p>Fuori dal Golfo il lucchetto della certificazione è più stretto che
+    altrove nei farmaci, dove l'autorizzazione al commercio nomina lo
+    stabilimento che produce il principio attivo e cambiarlo richiede una
+    variazione del dossier: nel 2022 il fermo di un singolo impianto a Shanghai
+    ha costretto gli ospedali di mezzo mondo a razionare i mezzi di contrasto.
+    Poi nei materiali della microelettronica, dove il neon di grado litografico
+    veniva per circa metà dall'Ucraina e il quarzo dei crogioli viene
+    sostanzialmente da due impianti in North Carolina. Nella difesa, dove il
+    collo di bottiglia del riarmo europeo si è rivelato la nitrocellulosa e non
+    l'acciaio. E nella rete elettrica, dove un grande trasformatore di potenza
+    si ordina con due o tre anni di anticipo e nessuna emergenza li accorcia.</p>
+
+    <p>Sono candidati, non conclusioni: ciascuno andrebbe verificato con lo
+    stesso metodo usato qui sotto, e alcuni non reggeranno.</p>
+  </div>
+</section>
+
+<!-- ============================================================ atto quarto -->
+<section class="involucro">
+  <div class="colonna">
+    <h2>Cosa si riesce davvero a misurare</h2>
+
+    <p>Questa è la parte che di solito non viene scritta. Una catena come
+    quella dell'olio motore ha cinque anelli verificabili separatamente:
+    i transiti nello stretto, l'export di basi dal Golfo, il prezzo delle
+    basi sui mercati, gli annunci di aumento dei produttori, il prezzo finale
+    sullo scaffale italiano. Di questi cinque, due non si possono osservare
+    con fonti pubbliche, e il fatto che non si possano osservare è a sua volta
+    un'informazione.</p>
+
+    <p>Ogni numero qui sotto porta scritto da dove viene e che statuto ha.
+    Quattro categorie, e se una cifra non rientra in nessuna non è stata
+    pubblicata.</p>
+
+    <ul class="legenda-statuto">
+      <li><span class="statuto misurato">Misurato</span>
+      Rilevato da qualcuno e verificabile da noi riscaricando il dato.</li>
+      <li><span class="statuto modellato">Modellato</span>
+      Prodotto da una simulazione. È un controfattuale, non un'osservazione.</li>
+      <li><span class="statuto parte">Dichiarazione di parte</span>
+      Detto da chi ha un interesse commerciale nel racconto. Si attribuisce,
+      non si riporta come fatto.</li>
+      <li><span class="statuto chiuso">Non verificabile da noi</span>
+      Esiste ma sta dietro un abbonamento che non abbiamo.</li>
+    </ul>
+  </div>
+
+  <figure>
+    <img src="assets/grafici/transiti-hormuz.svg" alt="Grafico dei transiti giornalieri nello stretto di Hormuz dal 2019 al 2026. La linea resta attorno a settanta-novanta navi al giorno fino a febbraio 2026, poi crolla verticalmente sotto le cinque e non risale.">
+    <figcaption>
+      <span class="didascalia"><span class="statuto misurato">Misurato</span>
+      Navi al giorno in transito nello stretto di Hormuz. La banda chiara è
+      l'oscillazione giornaliera, la linea è la media a sette giorni. Media
+      2019-2025: 75,6 navi al giorno. Marzo 2026: 2,8. Fonte IMF PortWatch,
+      dati fino al 9 agosto 2026.</span>
+      <a class="scarica" href="dati/hormuz_transiti_giornalieri.csv" download>Scarica il dato</a>
+    </figcaption>
+  </figure>
+
+  <div class="colonna">
+    <p>Questo è l'anello che funziona meglio, ed è gratuito. I dati vengono dai
+    transponder che le navi tengono accesi per non scontrarsi, raccolti da
+    satellite. C'è però un'avvertenza che va sempre attaccata a questo tipo di
+    numero: nelle aree di conflitto ci sono disturbi al segnale satellitare,
+    trasmissioni falsificate e navi che navigano con il transponder spento.
+    I transiti che si vedono sono quindi una sottostima di quelli reali, e non
+    si sa di quanto.</p>
+  </div>
+
+  <figure>
+    <img src="assets/grafici/chokepoint-confronto.svg" alt="Grafico a barre orizzontali con la variazione percentuale dei transiti in ciascuno stretto marittimo fra l'inverno e la primavera del 2026. Hormuz segna circa meno novantasei per cento, tutti gli altri restano entro poche decine di punti.">
+    <figcaption>
+      <span class="didascalia"><span class="statuto misurato">Misurato</span>
+      Variazione della media giornaliera dei transiti fra dicembre 2025 -
+      febbraio 2026 e marzo - maggio 2026. Esclusi gli stretti con meno di tre
+      navi al giorno, dove il rapporto è rumore.</span>
+      <a class="scarica" href="dati/chokepoint_transiti_mensili.csv" download>Scarica il dato</a>
+    </figcaption>
+  </figure>
+
+  <div class="colonna">
+    <h3>Il prezzo, che è il punto, è anche il buco</h3>
+
+    <p>Le quotazioni delle basi lubrificanti si comprano da tre agenzie
+    specializzate e costano migliaia di euro l'anno. Il prezzo al dettaglio
+    italiano dei lubrificanti non esiste come serie pubblica isolabile, perché
+    l'indice dei prezzi al consumo lo annega dentro una voce dominata dai
+    carburanti. Restano le dogane, che pubblicano per ogni codice di merce sia
+    il valore sia la quantità: il loro rapporto è un valore unitario implicito.</p>
+
+    <p>Non è un prezzo, e non va chiamato così. È il valore medio dichiarato al
+    chilo di tutto ciò che entra sotto un certo codice, quindi un cambiamento
+    nella composizione della merce si legge come un cambiamento di prezzo. Ma
+    ha una proprietà che nessun'altra fonte gratuita possiede: si calcola allo
+    stesso modo per il greggio, per i lubrificanti e per l'elio, quindi le tre
+    curve si possono confrontare fra loro senza mescolare una quotazione di
+    mercato con una statistica doganale.</p>
+  </div>
+
+  <figure>
+    <img src="assets/grafici/valori-unitari.svg" alt="Grafico con tre linee indicizzate a gennaio 2024. Dopo febbraio 2026 la linea del greggio sale ripidamente fino a circa centoquaranta, quella dei lubrificanti sale meno, fino a poco sopra centoquindici, e quella dell'elio resta piatta attorno a cento.">
+    <ul class="chiave">
+      <li><i style="background:var(--accento)"></i> Greggio</li>
+      <li><i style="background:var(--accento-2)"></i> Oli lubrificanti, tutti i codici</li>
+      <li><i style="background:var(--modellato)"></i> Elio</li>
+      <li><i class="vuoto"></i> mese a volume ridotto, media meno affidabile</li>
+    </ul>
+    <figcaption>
+      <span class="didascalia"><span class="statuto misurato">Misurato</span>
+      Valore unitario all'import in Italia, gennaio 2024 uguale a 100.
+      Confrontando la media dei tre mesi prima della chiusura con quella dei
+      tre mesi dopo, il greggio sale del sessantasei per cento e i lubrificanti
+      del venti, l'elio del tre. Fonte Eurostat Comext.</span>
+      <a class="scarica" href="dati/lubrificanti_italia_valore_unitario.csv" download>Lubrificanti</a>
+      <a class="scarica" href="dati/lubrificanti_italia_per_codice_valore_unitario.csv" download>Per codice</a>
+      <a class="scarica" href="dati/greggio_italia_valore_unitario.csv" download>Greggio</a>
+      <a class="scarica" href="dati/elio_ue_valore_unitario.csv" download>Elio</a>
+    </figcaption>
+  </figure>
+
+  <div class="colonna">
+    <p>I lubrificanti si sono mossi, ma meno del greggio e più tardi. Usando la
+    stessa finestra adoperata per gli stretti, cioè la media dei tre mesi
+    precedenti la chiusura contro quella dei tre successivi, il greggio
+    importato in Italia sale del sessantasei per cento e gli oli lubrificanti
+    del venti: hanno recuperato all'incirca un terzo del movimento a monte.
+    Il picco è a maggio, con 1,76 euro al chilo, ed è il valore più alto degli
+    ultimi due anni fra i mesi a volume pieno.</p>
+
+    <p>Quella precisazione sul volume conta più di quanto sembri. Nell'agosto
+    2025 lo stesso indicatore segnava 2,09 euro al chilo, un valore più alto,
+    ma su ventisettemila tonnellate contro le cinquantanovemila di maggio 2026:
+    in un mese sottile basta una partita anomala a spostare la media, e quel
+    picco è composizione, non prezzo. I mesi del 2026 stanno invece tutti sopra
+    le quarantacinquemila tonnellate, e la salita è progressiva su quattro mesi
+    consecutivi. Ha la forma di un prezzo che si muove, non di un artefatto.</p>
+
+    <p class="rilievo">Quindi il quadro non è né lo scollamento verso l'alto di
+    cui parla la stampa di settore, né l'immobilità: è un adeguamento parziale
+    e ritardato, di circa un terzo, mentre l'elio resta praticamente fermo,
+    con un più tre per cento.</p>
+
+    <p>Il ritardo ha una spiegazione ovvia e una interessante. Quella ovvia è
+    che le forniture industriali viaggiano su contratti annuali, che assorbono
+    gli scossoni molto più lentamente del mercato a pronti: il prezzo di
+    frontiera è per costruzione una versione smussata e in ritardo di quello
+    spot. Quella interessante è che il ritardo è esattamente ciò che il
+    lucchetto della certificazione produce. Chi non può cambiare fornitore
+    subito non compra al prezzo del giorno: paga quello del contratto finché
+    dura, e poi lo rinnova a condizioni peggiori. Lo shock non sparisce,
+    slitta.</p>
+
+    <p>Restano le altre avvertenze. Il valore unitario è una media su codici che
+    contengono merci diverse, quindi un cambio di composizione si legge come un
+    cambio di prezzo. È un prezzo di frontiera e non di scaffale. I dati si
+    fermano a maggio e non coprono il secondo blocco di inizio luglio, che è
+    proprio dove ci si aspetterebbe il resto dell'adeguamento. E l'Italia importa
+    l'ottantaquattro per cento dei suoi lubrificanti da altri paesi europei e
+    quasi nulla dal Golfo, quindi la trasmissione passa dal mercato europeo
+    delle basi, non dal commercio diretto.</p>
+
+    <div class="nota">
+      <p><strong>Due errori che abbiamo commesso e poi corretto.</strong>
+      Li lasciamo scritti perché sono lo stesso tipo di errore di cui parla
+      questa pagina, e perché entrambi producevano un numero pulito e
+      sbagliato.</p>
+
+      <p>Il primo: la prima versione di questo grafico misurava i lubrificanti
+      su un solo codice doganale, il 2710 19 81, che raccoglie gli oli motore
+      già confezionati, e mostrava un aumento dell'uno virgola sette per cento.
+      Ma quel codice vale seimila tonnellate al mese, mentre il 2710 19 99, che
+      è dove entrano le basi, ne vale quarantottomila. Guardando un ottavo del
+      mercato il mercato sembrava fermo. Ora la serie somma tutti e otto i
+      codici in cui l'Unione europea classifica i lubrificanti, pesandoli per
+      le quantità, e il file spacchettato per codice è scaricabile qui sopra
+      perché i singoli codici si muovono in direzioni diverse.</p>
+
+      <p>Il secondo: la prima versione mostrava l'elio in calo dell'ottanta per
+      cento, il che sembrava una notizia. Non lo era. Sotto il codice doganale
+      dell'elio i Paesi Bassi dichiarano quasi dodicimila tonnellate di merce
+      di origine cinese a meno di quattro euro al chilo, contro i settanta o
+      novanta a cui l'elio industriale viaggia davvero: qualunque cosa sia,
+      elio non è, e da sola schiacciava la media. Ce ne siamo accorti solo
+      perché il numero era fisicamente implausibile rispetto alla produzione
+      mondiale.</p>
+    </div>
+
+    <h3>Quando invece la sostituzione funziona</h3>
+
+    <p>L'elio offre anche il controesempio, ed è la cosa più incoraggiante che
+    si trovi in questi dati. Il Qatar valeva due terzi dell'elio che l'Europa
+    comprava fuori dai propri confini a gennaio 2026. A maggio ne vale un terzo,
+    e il primo fornitore è diventata l'Algeria, con volumi complessivi quasi
+    invariati. L'origine si è sostituita nel giro di due mesi, senza che il
+    prezzo di frontiera si muovesse.</p>
+  </div>
+
+  <figure>
+    <img src="assets/grafici/elio-origine.svg" alt="Grafico a barre della quota qatarina sull'elio importato da fuori Unione europea. La quota oscilla attorno a metà nel 2025, sale a tre quarti a dicembre, e scende progressivamente fino a circa un terzo a maggio 2026.">
+    <figcaption>
+      <span class="didascalia"><span class="statuto misurato">Misurato</span>
+      Quota del Qatar sulle tonnellate di elio importate da fuori Unione europea
+      da Italia, Germania, Francia, Paesi Bassi e Spagna. In evidenza i mesi
+      successivi alla chiusura. Escluse le dichiarazioni fuori dalla banda di
+      plausibilità, come spiegato nella nota qui sopra.</span>
+      <a class="scarica" href="dati/elio_ue_valore_unitario_per_origine.csv" download>Scarica il dato</a>
+    </figcaption>
+  </figure>
+
+  <div class="colonna">
+    <p>È esattamente la distinzione che serve. Un input critico non è un input
+    che viene da un posto solo: è un input che non si può ricomprare altrove
+    abbastanza in fretta. L'elio, alla dogana europea, si è ricomprato altrove.
+    Il che non dice nulla su quello che è successo alla Corea del Sud, che dal
+    Qatar prendeva quasi due terzi del proprio, e che non ha l'Algeria a
+    portata di nave.</p>
+  </div>
+</section>
+
+<!-- ============================================================ atto quinto -->
+<section class="involucro">
+  <div class="colonna">
+    <h2>Quello che questa pagina non sa</h2>
+
+    <p>Il modello più citato su questa crisi è una simulazione dell'istituto di
+    Kiel che stima gli effetti della chiusura sui prezzi settoriali. Dice che
+    il greggio sale del dodici per cento circa, i prodotti petroliferi del sette
+    e la chimica del sei, e che il danno vero non è in Europa ma nei paesi
+    poveri che importano energia e fertilizzanti: lo Zambia vede i prezzi
+    alimentari salire di oltre il trenta per cento. Sono numeri utili e sono
+    numeri finti, nel senso preciso che non sono stati osservati: escono da un
+    modello di equilibrio generale, e gli autori stessi avvertono che il modello
+    non include speculazione, accumulo di scorte, rilasci di riserve strategiche
+    né i mercati a termine.</p>
+
+    <p>Va detto anche che quel lavoro non parla di lubrificanti. La catena che
+    modella è energia, chimica, fertilizzanti, cibo. Usarlo per certificare
+    quello che succede all'olio motore sarebbe attribuirgli cose che non dice.</p>
+
+    <p>Poi c'è un buco che nessuno può riempire con dati pubblici, ed è il
+    prezzo che l'automobilista italiano paga in officina. Non esiste una serie
+    storica pubblica dei prezzi al dettaglio dei lubrificanti in Italia. Le
+    cifre che circolano, gli aumenti a tre cifre percentuali sui gradi più
+    ricercati, il rientro previsto per il 2027, arrivano tutte da associazioni
+    di categoria e da distributori, cioè da soggetti che hanno un interesse
+    commerciale diretto nel racconto della scarsità, e alcuni dei quali nello
+    stesso comunicato invitano a bloccare il prezzo con un abbonamento. Possono
+    benissimo avere ragione. Ma finché non sono verificate restano dichiarazioni
+    di parte, e su questa pagina non diventano fatti.</p>
+
+    <p>C'è infine una cosa che l'Unione europea sa fare e non fa. Nel suo
+    tariffario doganale esiste un codice che descrive la base lubrificante di
+    alta qualità alla lettera, indicando indice di viscosità, contenuto di
+    saturi e tenore di zolfo, e un altro dedicato alla base sintetizzata dal gas.
+    Le definizioni ci sono, precise al decimale. Ma le statistiche del commercio
+    si fermano due cifre prima, dove quelle basi finiscono mescolate a tutti gli
+    altri oli lubrificanti. Sapere e non pubblicare è una scelta, e vale la pena
+    saperlo.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="coda involucro">
+  <div class="colonna">
+    <p>Tutti i grafici sono generati dai file scaricabili sotto ciascuno di
+    essi. I dati sono congelati allo scatto del <strong>16 agosto 2026</strong>:
+    questa non è una dashboard che si aggiorna da sola, è un documento datato,
+    e i numeri che mostra sono quelli che erano disponibili quel giorno. Lo
+    scaricamento è fatto da uno script pubblico, e ogni file ha nel manifesto
+    l'indirizzo da cui viene, l'ora e il codice di controllo.</p>
+    <p>Fonti principali: IMF PortWatch per i transiti, Eurostat Comext per il
+    commercio, il tariffario doganale dell'Unione europea per le definizioni
+    di merce, il Kiel Policy Brief numero 206 del marzo 2026 per la simulazione.
+    <a href="metodo.html">Metodo, fonti e limiti in dettaglio</a>.</p>
+  </div>
+</footer>
+
+<script src="assets/globo.js" defer></script>
+</body>
+</html>

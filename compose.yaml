@@ -1,0 +1,7 @@
+services:
+  catene:
+    build: .
+    image: catene-fornitura-critiche
+    restart: unless-stopped
+    ports:
+      - "8081:80"

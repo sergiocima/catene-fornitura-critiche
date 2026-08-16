@@ -1,0 +1,53 @@
+name: Pubblica su Pages
+
+# I grafici e la copia dei dati dentro il sito non stanno nel repo: sono
+# artefatti, e si ricostruiscono qui a ogni pubblicazione partendo dallo
+# snapshot committato. Cosi' il repo resta l'archivio e la pagina resta
+# esattamente cio' che quell'archivio produce.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  costruisci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Nessun pip install: gli script usano solo la libreria standard,
+      # di proposito, perche' devono funzionare fra tre anni senza manutenzione.
+      - name: Ricostruisci grafici e dati del sito
+        run: python3 scripts/genera_grafici.py
+
+      - name: Cifre citate nel testo
+        run: python3 scripts/cifre_chiave.py >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sito
+
+  pubblica:
+    needs: costruisci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

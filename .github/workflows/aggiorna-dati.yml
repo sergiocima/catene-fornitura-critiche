@@ -1,0 +1,68 @@
+name: Aggiorna i dati
+
+# Apre una pull request, NON pubblica.
+#
+# Nella pagina i numeri sono scritti a mano dentro le frasi che li commentano,
+# di proposito: se una pipeline li riscrivesse, il testo comincerebbe a mentire
+# senza che nessuno se ne accorga, ed e' esattamente il difetto che la pagina
+# denuncia. Quindi il robot prepara lo scatto nuovo e si ferma li'. Il diff dei
+# CSV e le cifre chiave stanno nella pull request, e tocca a una persona
+# guardare se il testo regge ancora prima di unire.
+
+on:
+  schedule:
+    # il 20 di ogni mese: Comext pubblica con due o tre mesi di ritardo,
+    # quindi piu' spesso di cosi' non aggiunge niente
+    - cron: '0 6 20 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Scarica lo snapshot nuovo
+        run: python3 scripts/aggiorna_dati.py
+
+      - name: Rigenera i grafici
+        run: python3 scripts/genera_grafici.py
+
+      - name: Raccogli le cifre da ricontrollare
+        id: cifre
+        run: |
+          {
+            echo 'testo<<FINE'
+            python3 scripts/cifre_chiave.py
+            echo 'FINE'
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: dati/aggiornamento-automatico
+          title: 'Dati aggiornati allo scatto di oggi'
+          commit-message: 'Nuovo scatto dei dati'
+          delete-branch: true
+          add-paths: |
+            dati/
+          body: |
+            Scatto nuovo scaricato da IMF PortWatch ed Eurostat Comext.
+
+            **Prima di unire**, confrontare le cifre qui sotto con quelle
+            scritte a mano in `sito/index.html`. Se una è cambiata, la frase
+            che la commenta va riscritta a mano: nessuno script tocca il testo.
+
+            Controllare in particolare se un mese prima marcato provvisorio è
+            ora completo, e se sono comparse celle fuori dalla banda dichiarata.
+
+            ```
+            ${{ steps.cifre.outputs.testo }}
+            ```
