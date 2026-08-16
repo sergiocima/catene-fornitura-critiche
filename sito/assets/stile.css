@@ -25,6 +25,12 @@
 
   --misura: 34rem;
   --largo:  74rem;
+  /* quanto scostare dall'alto gli elementi appiccicati, perche' non
+     finiscano dietro la fascia della bozza */
+  --barra:  3.2rem;
+
+  --bozza-fondo: #8a2a17;
+  --bozza-testo: #fdf3ee;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,6 +53,9 @@
     --globo-punto:  #9aa0a6;
     --globo-alternativa: #4fbdb6;
     --globo-testo:  #c8c4bc;
+
+    --bozza-fondo: #d94f2b;
+    --bozza-testo: #17181a;
   }
 }
 
@@ -127,7 +136,10 @@ h3 {
 
 @media (min-width: 62rem) {
   .scena-griglia { grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
-  .scena-globo { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; }
+  .scena-globo {
+    position: sticky; top: var(--barra); height: calc(100vh - var(--barra));
+    display: grid; place-items: center;
+  }
 }
 
 .scena-globo { padding: 1rem 0; }
@@ -144,7 +156,7 @@ h3 {
 
 @media (max-width: 61.99rem) {
   .scena-globo {
-    position: sticky; top: 0; z-index: 2;
+    position: sticky; top: var(--barra); z-index: 2;
     background: linear-gradient(var(--carta) 78%, transparent);
     padding-bottom: 1.5rem;
   }
@@ -311,4 +323,39 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .salta:focus {
   position: static; display: inline-block; margin: 0.5rem;
   padding: 0.5rem 0.9rem; background: var(--accento); color: #fff;
+}
+
+/* ---------------------------------------------------------------- bozza --
+   Fascia fissa in cima. Sta fuori dal flusso e resta visibile a qualunque
+   altezza della pagina: una bozza che si dichiara solo nell'intestazione
+   smette di dichiararsi appena qualcuno arriva da un link diretto a un
+   grafico, che e' esattamente quando conta.
+   ------------------------------------------------------------------------ */
+
+.bozza {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 0.3rem 0.9rem;
+  padding: 0.45rem 1rem;
+  background: var(--bozza-fondo); color: var(--bozza-testo);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 0.82rem; line-height: 1.35; text-align: center;
+}
+.bozza strong {
+  text-transform: uppercase; letter-spacing: 0.13em; font-size: 0.74rem;
+  border: 1px solid currentColor; border-radius: 3px; padding: 0.1rem 0.45rem;
+}
+.bozza a { color: inherit; text-decoration-color: currentColor; }
+
+.avviso-sezione {
+  border-left: 3px solid var(--bozza-fondo);
+  background: var(--carta-scavo);
+  padding: 1rem 1.2rem; border-radius: 0 4px 4px 0;
+  font-size: 0.92rem; margin: 1.6rem 0;
+}
+.avviso-sezione strong { color: var(--inchiostro); }
+
+@media (max-width: 34rem) {
+  :root { --barra: 5rem; }
+  .bozza { font-size: 0.76rem; }
 }
