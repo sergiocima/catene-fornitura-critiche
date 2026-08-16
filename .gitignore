@@ -1,9 +1,15 @@
 # Copie generate in fase di build: si ricostruiscono con
 # scripts/genera_grafici.py e non vanno nella storia, altrimenti ogni file
 # finisce nel repo due volte.
+#
+# sito/assets/terre.json invece SI' che va committato, anche se e' generato:
+# lo produce aggiorna_dati.py scaricandolo da Natural Earth, non
+# genera_grafici.py, quindi da un checkout pulito la pubblicazione lo
+# troverebbe mancante e il mappamondo resterebbe senza mondo. E' una geografia
+# che non cambia: tenerla nel repo toglie anche una dipendenza di rete dal
+# percorso di pubblicazione.
 sito/dati/
 sito/assets/grafici/
-sito/assets/terre.json
 sito/assets/chokepoint.json
 
 # Materiali di lavoro: estratti di pubblicazioni altrui, tenuti in locale
