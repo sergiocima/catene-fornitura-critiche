@@ -27,6 +27,26 @@ quando smette di aggiornarsi e quando ci riesce.
 importante rispetto al briefing iniziale, ed è imposto dai dati, non da una preferenza. Vedi la
 sezione sul ribaltamento della tesi.
 
+**[✓ 2026-08-16] Pubblicazione su GitHub Pages, non sulla VPS.** Repo personale
+`sergiocima/catene-fornitura-critiche`, online su
+<https://sergiocima.github.io/catene-fornitura-critiche/>. Sergio ha scelto di tenerlo per conto
+suo e non sotto una testata Zadig, quindi Pages invece di Cloudflare. Tre ragioni: l'archivio
+datato che il progetto produce è già di forma git, e committarlo dà gratis storia e diff; la VPS
+è la macchina che da Starlink non si raggiunge senza VPN; e qui non serve un server.
+
+**[✓ 2026-08-16] L'aggiornamento mensile apre una pull request, non pubblica.** È la decisione
+che protegge la regola editoriale: nella pagina i numeri sono scritti a mano dentro le frasi che
+li commentano, quindi un aggiornamento automatico del testo lo farebbe mentire. La pull request
+porta il diff dei CSV e l'elenco delle cifre da ricontrollare, prodotto da
+`scripts/cifre_chiave.py`.
+
+**[✓ 2026-08-16] Pubblicata come bozza dichiarata.** Fascia appiccicata in cima a entrambe le
+pagine, titolo che lo dice nella linguetta, `noindex` sui motori di ricerca, sezione
+`metodo.html#bozza` che elenca cosa manca, e un avviso in linea sulla sezione delle catene
+critiche, che è la meno solida. La fascia è appiccicata e non fissa perché il testo va a capo a
+larghezze diverse e l'altezza non è nota in anticipo: fissa richiedeva un padding sul body pari a
+un'altezza che non si può sapere.
+
 **[✓ 2026-08-16] I dati statistici si prendono via SDMX**, non dai bulk file di Eurostat. Provider
 `comext`, dataflow `DS-045409`. La pipeline definitiva (`scripts/aggiorna_dati.py`) chiama
 l'endpoint SDMX direttamente con la sola libreria standard, senza `opensdmx`, per non dipendere da
@@ -250,6 +270,10 @@ Da verificare prima di pubblicare, tutte affermazioni che in pagina sono scritte
   per uno o attenuati.
 - Che a Ras Laffan si produca sia la base GTL sia circa un terzo dell'elio mondiale, e l'entità
   del danno agli impianti dopo il 2 marzo.
+
+Quando le verifiche qui sopra sono fatte, **togliere le marcature di bozza**: il `noindex` in
+entrambe le pagine, la fascia in cima, l'avviso in linea sulla sezione delle catene critiche e la
+sezione `metodo.html#bozza`. Finché restano, la pagina non è indicizzata dai motori di ricerca.
 
 Da fare comunque:
 

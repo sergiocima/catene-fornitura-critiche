@@ -46,13 +46,26 @@ Per riscrivere uno snapshot preciso invece di crearne uno nuovo:
 
 ## Deploy
 
-```bash
-docker compose up -d --build     # espone la porta 8081
-```
+In produzione: **GitHub Pages**, da questo repo.
+Online su <https://sergiocima.github.io/catene-fornitura-critiche/>.
 
-Il container è `nginx:alpine` con dentro la cartella `sito/`. Nessun processo
-applicativo, nessun database. Gli asset e i dati hanno cache lunga, l'HTML no,
-così una correzione di refuso arriva subito.
+Due workflow in `.github/workflows/`:
+
+`pubblica.yml` ricostruisce grafici e copia dei dati dallo scatto committato e pubblica, a ogni
+push su main. I grafici non stanno nel repo: sono artefatti, e si rifanno qui, così il repo
+resta l'archivio e la pagina resta esattamente ciò che quell'archivio produce.
+
+`aggiorna-dati.yml` gira il 20 di ogni mese e **apre una pull request, non pubblica**. Nella
+pull request ci sono il diff dei CSV e l'elenco delle cifre citate a mano nel testo, da
+confrontare con la pagina prima di unire.
+
+Il `Dockerfile` e il `compose.yaml` restano come anteprima locale e via di fuga
+(`docker compose up -d --build`, porta 8081), non come strada di produzione. Non sono mai stati
+costruiti davvero: in locale il demone Docker non era attivo.
+
+**Trappola.** `actions/configure-pages` vuole `enablement: true`, altrimenti il primo push su un
+repo nuovo fallisce con «Get Pages site failed» e Pages va acceso a mano nelle impostazioni
+prima che il workflow possa girare.
 
 ---
 
@@ -118,19 +131,8 @@ sospettare in anticipo.
 
 ---
 
-## Regole editoriali da non rompere
+## Regole editoriali
 
-Ogni numero in pagina porta uno dei quattro statuti: misurato, modellato,
-dichiarazione di parte, non verificabile. Se una cifra non rientra in nessuno,
-non si pubblica.
-
-Il valore unitario doganale non è un prezzo e non va mai chiamato così.
-
-Testo d'autore e dati vivi restano separati. I numeri citati nella prosa sono
-scritti a mano e riferiti allo snapshot dichiarato in fondo alla pagina: se si
-rigenera lo snapshot vanno ricontrollati a mano, perché uno script che riscrive
-i numeri sotto le frasi che li commentano fa mentire il testo senza che nessuno
-se ne accorga.
-
-Nei titoli maiuscola solo sulla prima parola e sui nomi propri. Niente trattino
-lungo. Poca elencazione, si scrive in prosa.
+Stanno in [`CLAUDE.md`](CLAUDE.md), perché sono istruzioni operative e non documentazione
+tecnica. In sintesi: ogni numero porta il suo statuto, il valore unitario non è un prezzo, e
+i numeri citati nella prosa sono scritti a mano e non vanno mai riscritti da uno script.
